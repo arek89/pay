@@ -45,7 +45,7 @@ const isValid = () => {
         $('#cardNumber').classList.remove('wrong');
     }
 
-    if (($('#month').value <= m || $('#month').value === '') && ($('#year').value == y) || $('#year').value === '') {
+    if (($('#month').value <= m || !$('#month').checkValidity()) && ($('#year').value == y || !$('#year').checkValidity())) {
         $('#month').classList.add('wrong');
         $('#year').classList.add('wrong');
         valid = false;
