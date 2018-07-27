@@ -25,10 +25,3 @@ gulp.task('watch', function () {
     gulp.watch('./js/**/*.js', ['es6']);
     gulp.watch('./css/**/*.scss', ['sass']);
 });
-
-gulp.task('deploy', [], function () {
-    return surge({
-        project: './build',         // Path to your static build directory
-        domain: 'example.surge.sh'  // Your domain or Surge subdomain
-    })
-})
