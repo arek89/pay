@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+    <div id="app">
+        <header role="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 text-left"><img src="./images/logo.png" class="logo" alt=""></div>
+                    <div class="col-4 text-center"><p>Checkout</p></div>
+                    <div class="col-4 text-right"><img src="./images/secure-icon.png" class="secure-icon" alt="secure-icon"></div>
+                </div>
+            </div>
+        </header>
+        <div class="container main-section">
+            <div class="row">
+                <div class="col-md-6 section-left">
+
+                        <div class="row">
+                            <div class="col">
+                                <p class="product-qty">1 Item</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <div class="product-wrapper">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="product text-center">
+                                    <img src="./images/1.jpg" class="product-image" alt="product-image">
+                                </div>
+                            </div>
+                            <div class="col-6 product-description">
+                                <p class="price"><strong>$29.99</strong></p>
+                                <p class="description">Extra Warm Protective Gloves - Waterproof & Windproof</p>
+                                <p class="quantity">Qty: <strong>1</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 section-right">
+                    <p class="pay-info">
+                        Payment information
+                    </p>
+
+                    <div class="form-check row">
+                        <div class="col card-holder-input">
+                            <input
+                                placeholder="Name on card"
+                                id="cardHolderName"
+                                class="form-control"
+                                type="text"
+                                required/>
+                        </div>
+                    </div>
+
+                    <div class="form-check row">
+                        <div class="col card-number-input">
+                            <input
+                                placeholder="Credit Card Number"
+                                id="cardNumber"
+                                class="form-control"
+                                type="tel"
+                                pattern="[0-9]{16,19}"
+                                maxlength="19"
+                                required/>
+                        </div>
+                    </div>
+
+                    <div class="form-check row">
+                        <div class="col-3 month-input">
+                            <input
+                                id="month"
+                                type="tel"
+                                class="form-control"
+                                minlength="2"
+                                maxlength="2"
+                                placeholder="MM"
+                                required/>
+                        </div>
+                        <div class="col-3 year-input">
+                            <input
+                                id="year"
+                                class="form-control"
+                                type="tel"
+                                minlength="2"
+                                maxlength="2"
+                                placeholder="YY"
+                                required/>
+                        </div>
+                        <div class="col-6 cvv-input">
+                            <input
+                                id="cvv"
+                                class="form-control"
+                                type="tel"
+                                maxlength="4"
+                                placeholder="CVC"
+                                required/>
+                        </div>
+                    </div>
+
+                    <div class="total-billed">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Total to pay</p>
+                            </div>
+
+                            <div class="col-6 text-right">
+                                <p>$29.99</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <button type="submit" onclick="onSubmit()" class="btn-pay"><i class="ion-locked"></i> Confirm and Pay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer>
+    <div class="container">
+        <div class="cards-accepted">
+            <div class="row">
+                <div class="col">
+                    <p>© SURVIVAL APEX B.V 2018</p>
+                </div>
+                <div class="col">
+                    <img src="./images/cards.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="./js/bundle.js"></script>
+</body>
+</html>
