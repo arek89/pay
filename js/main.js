@@ -69,3 +69,82 @@ const onSubmit = () => {
 
     console.log('submit');
 };
+
+const findGetParameter = parameterName => {
+    let result = null,
+        items = location.search.substr(1).split("&");
+
+    for (let index = 0; index < items.length; index++) {
+        if ((items[index] + '=').indexOf(parameterName) === 0) {
+            result = decodeURIComponent(items[index].slice(parameterName.length + 1));
+
+            break;
+        }
+    }
+
+    return result;
+};
+
+const url = `https://survivalapexshop.com/shop/cart/displayMiniCartByCode?shoppingCartCode=${findGetParameter('shoppingCartCode')}`;
+fetch(url, {
+        method: 'GET'
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(products => {
+        displayProducts(products.shoppingCartItems);
+        sumUpQuantity(products.shoppingCartItems);
+        sumUpPrices(products.shoppingCartItems);
+    });
+
+
+const displayProducts = products => {
+    // display products list
+    products.forEach(product => {
+        const   productWrapper = $('.product-wrapper'),
+            div = document.createElement('div');
+        div.className = 'row product';
+
+        div.innerHTML = `
+    <div class="col-6">
+        <div class="product-img-wrapper text-center">
+            <img src="${product.image}" class="product-image" alt="product-image">
+        </div>
+    </div>
+    <div class="col-6 product-description">
+        <p class="price"><strong>${product.price}</strong></p>
+        <p class="description">${product.name}</p>
+        <p class="quantity">Qty: <strong>${product.quantity}</strong></p>
+    </div>`;
+
+        productWrapper.appendChild(div);
+    });
+};
+
+const sumUpQuantity = products => {
+    // sum up all items
+    const sumProducts = products.map(product => {
+        return product.quantity;
+    }).reduce((total, num) => {
+        return total + num;
+    });
+
+    // display items amount
+    $('.products-amount').innerHTML = `${sumProducts} ${ sumProducts > 1 ? 'Items' : 'Item' }`;
+}
+
+const sumUpPrices = products => {
+    // sum app all prices
+    const sumPrices = products.map(price => {
+        return price.productPrice;
+    }).reduce((total, num) => {
+        return total + num;
+    });
+
+    // display items prices
+    $('.total-pay').innerHTML = `$${sumPrices}`;
+}
+
+
+

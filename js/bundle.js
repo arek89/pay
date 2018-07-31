@@ -74,3 +74,66 @@ var onSubmit = function onSubmit() {
 
     console.log('submit');
 };
+
+var findGetParameter = function findGetParameter(parameterName) {
+    var result = null,
+        items = location.search.substr(1).split("&");
+
+    for (var index = 0; index < items.length; index++) {
+        if ((items[index] + '=').indexOf(parameterName) === 0) {
+            result = decodeURIComponent(items[index].slice(parameterName.length + 1));
+
+            break;
+        }
+    }
+
+    return result;
+};
+
+var url = "https://survivalapexshop.com/shop/cart/displayMiniCartByCode?shoppingCartCode=" + findGetParameter('shoppingCartCode');
+fetch(url, {
+    method: 'GET'
+}).then(function (response) {
+    return response.json();
+}).then(function (products) {
+    displayProducts(products.shoppingCartItems);
+    sumUpQuantity(products.shoppingCartItems);
+    sumUpPrices(products.shoppingCartItems);
+});
+
+var displayProducts = function displayProducts(products) {
+    // display products list
+    products.forEach(function (product) {
+        var productWrapper = $('.product-wrapper'),
+            div = document.createElement('div');
+        div.className = 'row product';
+
+        div.innerHTML = "\n    <div class=\"col-6\">\n        <div class=\"product-img-wrapper text-center\">\n            <img src=\"" + product.image + "\" class=\"product-image\" alt=\"product-image\">\n        </div>\n    </div>\n    <div class=\"col-6 product-description\">\n        <p class=\"price\"><strong>" + product.price + "</strong></p>\n        <p class=\"description\">" + product.name + "</p>\n        <p class=\"quantity\">Qty: <strong>" + product.quantity + "</strong></p>\n    </div>";
+
+        productWrapper.appendChild(div);
+    });
+};
+
+var sumUpQuantity = function sumUpQuantity(products) {
+    // sum up all items
+    var sumProducts = products.map(function (product) {
+        return product.quantity;
+    }).reduce(function (total, num) {
+        return total + num;
+    });
+
+    // display items amount
+    $('.products-amount').innerHTML = sumProducts + " " + (sumProducts > 1 ? 'Items' : 'Item');
+};
+
+var sumUpPrices = function sumUpPrices(products) {
+    // sum app all prices
+    var sumPrices = products.map(function (price) {
+        return price.productPrice;
+    }).reduce(function (total, num) {
+        return total + num;
+    });
+
+    // display items prices
+    $('.total-pay').innerHTML = "$" + sumPrices;
+};

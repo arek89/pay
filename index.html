@@ -29,26 +29,17 @@
         <div class="container main-section">
             <div class="row">
                 <div class="col-md-6 section-left">
-
-                        <div class="row">
-                            <div class="col">
-                                <p class="product-qty">1 Item</p>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="product-qty"><span class="products-amount"></span></p>
                         </div>
-                        <hr>
-                    <div class="product-wrapper">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="product text-center">
-                                    <img src="./images/1.jpg" class="product-image" alt="product-image">
-                                </div>
-                            </div>
-                            <div class="col-6 product-description">
-                                <p class="price"><strong>$29.99</strong></p>
-                                <p class="description">Extra Warm Protective Gloves - Waterproof & Windproof</p>
-                                <p class="quantity">Qty: <strong>1</strong></p>
-                            </div>
+                    </div>
+                    <hr>
+                    <div class="overlay">
+                        <div class="product-wrapper">
+                            <!--product list is displayed dynamically here-->
                         </div>
+                        <div class="fade"></div>
                     </div>
                 </div>
                 <div class="col-md-6 section-right">
@@ -90,6 +81,8 @@
                                 pattern="[0-9]{2}"
                                 minlength="2"
                                 maxlength="2"
+                                min="1"
+                                max="12"
                                 placeholder="MM"
                                 required/>
                         </div>
@@ -110,6 +103,7 @@
                                 class="form-control"
                                 type="tel"
                                 pattern="[0-9]{3,4}"
+                                minlength="3"
                                 maxlength="4"
                                 placeholder="CVC"
                                 required/>
@@ -123,7 +117,9 @@
                             </div>
 
                             <div class="col-6 text-right">
-                                <p>$29.99</p>
+                                <p class="total-pay">
+                                    <!--prices sum up-->
+                                </p>
                             </div>
                         </div>
                     </div>
