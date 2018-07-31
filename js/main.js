@@ -109,16 +109,16 @@ const displayProducts = products => {
         div.className = 'row product';
 
         div.innerHTML = `
-    <div class="col-6">
-        <div class="product-img-wrapper text-center">
-            <img src="${product.image}" class="product-image" alt="product-image">
-        </div>
-    </div>
-    <div class="col-6 product-description">
-        <p class="price"><strong>${product.price}</strong></p>
-        <p class="description">${product.name}</p>
-        <p class="quantity">Qty: <strong>${product.quantity}</strong></p>
-    </div>`;
+            <div class="col-6">
+                <div class="product-img-wrapper text-center">
+                    <img src="${product.image}" class="product-image" alt="product-image">
+                </div>
+            </div>
+            <div class="col-6 product-description">
+                <p class="price"><strong>${product.price}</strong></p>
+                <p class="description">${product.name}</p>
+                <p class="quantity">Qty: <strong>${product.quantity}</strong></p>
+            </div>`;
 
         productWrapper.appendChild(div);
     });

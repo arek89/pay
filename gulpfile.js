@@ -1,7 +1,8 @@
 var gulp    = require('gulp'),
     rename  = require('gulp-rename'),
     sass    = require('gulp-sass'),
-    babel   = require('gulp-babel');
+    babel   = require('gulp-babel'),
+    uglify  = require('gulp-uglify');
 
 
 gulp.task('default', ['sass', 'es6', 'watch']);
@@ -18,6 +19,7 @@ gulp.task('es6', function() {
             presets: ['env']
         }))
         .pipe(rename('./js/bundle.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./'))
 });
 
