@@ -91,6 +91,8 @@ fetch(url, {
     })
     .then(response => {
         return response.json();
+    }, error => {
+        console.log(error);
     })
     .then(products => {
         displayProducts(products.shoppingCartItems);
