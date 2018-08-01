@@ -68,6 +68,7 @@ const onSubmit = () => {
     if (!isValid()) return;
 
     console.log('submit');
+    window.location.href = `${window.location.hostname}/shop/order/confirmation.html`;
 };
 
 const findGetParameter = parameterName => {
@@ -86,26 +87,24 @@ const findGetParameter = parameterName => {
 };
 
 const url = `https://survivalapexshop.com/shop/cart/displayMiniCartByCode?shoppingCartCode=${findGetParameter('shoppingCartCode')}`;
-fetch(url, {
-        method: 'GET'
-    })
+fetch(url, { method: 'GET' })
     .then(response => {
         return response.json();
     }, error => {
-        console.log(error);
+        console.log('error');
     })
     .then(products => {
         displayProducts(products.shoppingCartItems);
         sumUpQuantity(products.shoppingCartItems);
-        sumUpPrices(products.shoppingCartItems);
+        sumUpPrices(products);
     });
 
 
 const displayProducts = products => {
     // display products list
     products.forEach(product => {
-        const   productWrapper = $('.product-wrapper'),
-            div = document.createElement('div');
+        const productWrapper = $('.product-wrapper'),
+        div = document.createElement('div');
         div.className = 'row product';
 
         div.innerHTML = `
@@ -133,20 +132,13 @@ const sumUpQuantity = products => {
     });
 
     // display items amount
-    $('.products-amount').innerHTML = `${sumProducts} ${ sumProducts > 1 ? 'Items' : 'Item' }`;
-}
+    $('.product-qty').innerHTML = `${sumProducts} ${ sumProducts > 1 ? 'Items' : 'Item' }`;
+};
 
 const sumUpPrices = products => {
-    // sum app all prices
-    const sumPrices = products.map(price => {
-        return price.productPrice;
-    }).reduce((total, num) => {
-        return total + num;
-    });
-
     // display items prices
-    $('.total-pay').innerHTML = `$${sumPrices}`;
-}
+    $('.total-pay').innerHTML = `${products.total}`;
+};
 
 
 

@@ -31,7 +31,9 @@
                 <div class="col-md-6 section-left">
                     <div class="row">
                         <div class="col">
-                            <p class="product-qty"><span class="products-amount"></span></p>
+                            <p class="product-qty">
+                                <!--item quantity-->
+                            </p>
                         </div>
                     </div>
                     <hr>
@@ -52,7 +54,7 @@
                             <input
                                 placeholder="Name on card"
                                 id="cardHolderName"
-                                pattern="[A-Za-z]{2,}"
+                                pattern="[A-Za-z_ ]{2,}"
                                 class="form-control"
                                 type="text"
                                 required />
@@ -81,8 +83,6 @@
                                 pattern="[0-9]{2}"
                                 minlength="2"
                                 maxlength="2"
-                                min="1"
-                                max="12"
                                 placeholder="MM"
                                 required/>
                         </div>
@@ -91,10 +91,10 @@
                                 id="year"
                                 class="form-control"
                                 type="tel"
-                                pattern="[0-9]{2}"
-                                minlength="2"
-                                maxlength="2"
-                                placeholder="YY"
+                                pattern="[0-9]{4}"
+                                minlength="4"
+                                maxlength="4"
+                                placeholder="YYYY"
                                 required/>
                         </div>
                         <div class="col-6 cvv-input">
@@ -103,8 +103,6 @@
                                 class="form-control"
                                 type="tel"
                                 pattern="[0-9]{3,4}"
-                                minlength="3"
-                                maxlength="4"
                                 placeholder="CVC"
                                 required/>
                         </div>
@@ -125,7 +123,9 @@
                     </div>
 
                     <div class="button">
-                        <button type="submit" onclick="onSubmit()" class="btn-pay"><i class="ion-locked"></i> Confirm and Pay</button>
+                        <button type="submit" onclick="onSubmit()" class="btn-pay">
+                            <i class="ion-locked"></i> Confirm and Pay
+                        </button>
                     </div>
                 </div>
             </div>
