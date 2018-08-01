@@ -68,7 +68,7 @@ const onSubmit = () => {
     if (!isValid()) return;
 
     console.log('submit');
-    window.location.href = `${window.location.hostname}/shop/order/confirmation.html`;
+    window.location.pathname = '/shop/order/confirmation.html';
 };
 
 const findGetParameter = parameterName => {
@@ -108,12 +108,12 @@ const displayProducts = products => {
         div.className = 'row product';
 
         div.innerHTML = `
-            <div class="col-6">
+            <div class="col-5">
                 <div class="product-img-wrapper text-center">
                     <img src="${product.image}" class="product-image" alt="product-image">
                 </div>
             </div>
-            <div class="col-6 product-description">
+            <div class="col-7 product-description">
                 <p class="price"><strong>${product.price}</strong></p>
                 <p class="description">${product.name}</p>
                 <p class="quantity">Qty: <strong>${product.quantity}</strong></p>
